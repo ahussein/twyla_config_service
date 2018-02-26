@@ -1,4 +1,4 @@
-# Twyla Configuration service
+Twyla Configuration service
 
 .. image:: https://travis-ci.org/ahussein/twyla_config_service.svg?branch=master
     :target: https://travis-ci.org/ahussein/twyla_config_service
@@ -50,13 +50,10 @@ The above tests requires a DB instance to be running since it includes integrati
 -----------------
 Load Testing The Service
 -----------------
-For load testing, I have picked up Locust_.
-.. _Locust: https://locust.io/
+For load testing, I have picked up Locust: https://locust.io/
 It is python based, so tests are written in python and it has a nice UI as well. Make sure to have your virtualenv is activated and then::
 
         pip install locustio
-
-I have prepared a simple load test script and you can run it with the following command (assuming that the service is running on localhost:8000)::
         locust -f load_test.py --no-web -c 1000 -r 10 --host=http://localhost:8000 --csv=load_test_result.csv
 
 This will start the load tester with a 1000 user each of them is trying to execute a mixure of the the exposed endpoints. The above
