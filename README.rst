@@ -45,3 +45,19 @@ To run the tests with coverage report, do::
 The above tests requires a DB instance to be running since it includes integration tests. To run only unittests do::
 
     pytest -v test/unittests
+
+
+-----------------
+Load Testing The Service
+-----------------
+For load testing, I have picked up Locust_.
+.. _Locust: https://locust.io/
+It is python based, so tests are written in python and it has a nice UI as well. Make sure to have your virtualenv is activated and then::
+
+        pip install locustio
+
+I have prepared a simple load test script and you can run it with the following command (assuming that the service is running on localhost:8000)::
+        locust -f load_test.py --no-web -c 1000 -r 10 --host=http://localhost:8000 --csv=load_test_result.csv
+
+This will start the load tester with a 1000 user each of them is trying to execute a mixure of the the exposed endpoints. The above
+command will run the load tests in no-ui mode and you can choose to run with the UI mode. Please check the docs for more details here: https://docs.locust.io/en/latest/what-is-locust.html
