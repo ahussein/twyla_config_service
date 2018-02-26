@@ -11,11 +11,16 @@ async def get(data):
     """
     Retrieves a configuration item from the database
     """
+    item_id = None
+    item_data = {}
     item = await Configuration.find_one({'tenant': data['tenant'], 
                                          'integration_type': data['integration_type']})
-    item_id = item.id
-    item.__dict__.pop('_id')
-    return item_id, item.__dict__
+    if item:
+        item_id = item.id
+        item.__dict__.pop('_id')
+        item_data = item.__dict__
+    return item_id, item_data
+
 
 
 async def add(data):
