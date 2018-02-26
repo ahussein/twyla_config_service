@@ -39,6 +39,7 @@ PyYAML==3.12
 requests==2.18.4
 sanic==0.7.0
 sanic-motor==0.2.8
+sanic-openapi==0.4.0
 simplegeneric==0.8.1
 six==1.11.0
 swagger-spec-validator==2.1.0
