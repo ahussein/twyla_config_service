@@ -3,6 +3,7 @@ Definining blueprints for routing
 """
 from sanic.response import json
 from sanic import Blueprint
+from sanic_openapi import doc
 import logging
 import traceback
 import config_manager
@@ -13,6 +14,7 @@ import utils
 bp_api_v1 = Blueprint('v1', url_prefix='/v1')
 
 @bp_api_v1.route('/', methods=['GET'])
+@doc.summary("A health check endpoint")
 async def healthcheck(request):
     """
     A health check endpoint
@@ -22,6 +24,10 @@ async def healthcheck(request):
 
 
 @bp_api_v1.route('/config', methods=['POST'])
+@doc.summary("Add new configuration item")
+@doc.consumes({"tenant": str,
+                "integration_type": str,
+                "configuration": object}, location="body")
 async def add_config(request):
     """
     An endpoint to add new configuration item
@@ -45,9 +51,15 @@ async def add_config(request):
 
 
 @bp_api_v1.route('/config', methods=['GET'])
+@doc.summary('Retrieves an existing configurations based on filtering parameters')
+@doc.produces({"result": 
+    {"tenant": str,
+                "integration_type": str,
+                "configuration": object}
+})
 async def get_config(request):
     """
-    An endpoint to retrieves an existing configurations based on filtering parameters
+    An endpoint to retrieves an existing configurations based on filtering parameteprs
     """
     args = request.raw_args
     if args:
