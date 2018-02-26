@@ -11,7 +11,7 @@ install:
 
 # command to run tests
 script:
-  - pytest -v --cov=./app tests
+  - pytest -v --cov=./app test
 
 after_success:
   - codecov
