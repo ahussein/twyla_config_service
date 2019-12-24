@@ -6,7 +6,7 @@ from sanic import Sanic
 from blueprints import bp_api_v1
 from models import Configuration, initialize_model
 import logging
-from sanic_openapi import swagger_blueprint, openapi_blueprint
+from sanic_openapi import swagger_blueprint
 import os
 
 # This should be configured in a configuration file or evnironment varaiable
@@ -23,7 +23,6 @@ app = Sanic(__name__)
 # register blueprints
 app.blueprint(bp_api_v1)
 app.blueprint(swagger_blueprint)
-app.blueprint(openapi_blueprint)
 
 # setup swager configurations, better load this from a config file or use api-dirven approache
 app.config.API_VERSION = '0.1.0'

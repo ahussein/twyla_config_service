@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+codecov= "*"
+coverage = "*"
+
+[packages]
+sanic-motor = "*"
+sanic = "*"
+sanic-openapi = "*"
+motor = "*"
+aiohttp = "*"
+twyla-configuration-service = {editable = true,path = "."}
+
+[requires]
+python_version = "3.7"

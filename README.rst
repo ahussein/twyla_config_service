@@ -11,15 +11,16 @@ Twyla Configuration service
 Development Installation
 ------------------------
 
-To install for development, activate your virtualenv and
+This project uses [pipenv](https://pipenv-fork.readthedocs.io/en/latest/)
+
+To install for development
 do::
 
     git clone https://github.com/ahussein/twyla_config_service.git
     cd twyla_config_service
-    pip install -r requirements.txt
-    pip install -e .
+    pipenv shell
+    pipenv install --dev
 
-**Make sure your virtualenv is activated for the rest of the commands in this page.**
 
 To run the app, you need a DB instance running and you can use an environment variable to point to your running
 DB instance like the following::
@@ -53,7 +54,7 @@ Load Testing The Service
 For load testing, I have picked up Locust: https://locust.io/
 It is python based, so tests are written in python and it has a nice UI as well. Make sure to have your virtualenv is activated and then::
 
-        pip install locustio
+        pipenv install locustio
         locust -f load_test.py --no-web -c 1000 -r 10 --host=http://localhost:8000 --csv=load_test_result.csv
 
 This will start the load tester with a 1000 user each of them is trying to execute a mixure of the the exposed endpoints. The above
