@@ -11,7 +11,7 @@ Twyla Configuration service
 Development Installation
 ------------------------
 
-This project uses [pipenv](https://pipenv-fork.readthedocs.io/en/latest/)
+This project uses (pipenv)[https://pipenv-fork.readthedocs.io/en/latest/]
 
 To install for development
 do::
